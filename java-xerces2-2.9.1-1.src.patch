@@ -1,0 +1,22 @@
+--- origsrc/xerces-2_9_1/build.sh	2007-09-14 17:27:06.000000000 -0500
++++ src/xerces-2_9_1/build.sh	2009-11-26 20:59:09.264089400 -0600
+@@ -32,9 +32,6 @@ fi
+ 
+ # OS specific support.  $var _must_ be set to either true or false.
+ cygwin=false;
+-case "`uname`" in
+-    CYGWIN*) cygwin=true ;;
+-esac
+ 
+ # For Cygwin, ensure paths are in UNIX format before anything is touched
+ if $cygwin ; then
+--- origsrc/xerces-2_9_1/build.xml	2007-09-14 17:27:06.000000000 -0500
++++ src/xerces-2_9_1/build.xml	2009-12-10 03:13:36.145046200 -0600
+@@ -255,6 +255,7 @@ Authors:
+            destdir="${build.dest}"
+            classpath="${build.dir}/classes:${tools.dir}/${jar.apis}:${tools.dir}/${jar.resolver}:${tools.dir}/${jar.serializer}"
+            debug="${debug}"
++           nowarn="true"
+            deprecation="${deprecation}"
+            optimize="${optimize}"
+            includeAntRuntime="false"
