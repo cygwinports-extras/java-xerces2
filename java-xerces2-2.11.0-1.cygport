@@ -1,0 +1,21 @@
+JAVA_CLASSPATH="xml-apis.jar:xml-apis-ext.jar:xalan.jar"
+inherit ant
+
+DESCRIPTION="Apache Java XML parser"
+HOMEPAGE="http://xerces.apache.org/xerces2-j/"
+SRC_URI="mirror://apache/xerces/j/Xerces-J-src.${PV}.tar.gz"
+SRC_DIR="xerces-${PV//./_}"
+
+PATCH_URI="2.11.0-xml-apis.patch"
+
+ANT_BUILD_ARGS="-Dtools.dir=${JAVA_DIR}"
+ANT_BUILD_TARGETS="jar javadocs"
+
+src_install() {
+	cd ${B}
+	dojar build/xercesImpl.jar
+	dojavadoc build/docs/javadocs/xerces2
+	newjavadoc build/docs/javadocs/other xerces2-other
+	newjavadoc build/docs/javadocs/xni xerces2-xni
+	newjavadoc build/docs/javadocs/xs xerces2-xs
+}
